@@ -1,0 +1,20 @@
+package com.sample
+
+import com.sample.DroolsTest.*;
+import com.sample.facts.*;
+import com.sample.UserInterface.*;
+
+
+rule "Zaglowiec"
+	when
+		exists Drewniany(value == 1)
+	then
+		System.out.println("Zaglowiec");
+end
+
+rule "Niszczyciel"
+	when
+		exists Drewniany(value == 0)
+	then
+		System.out.println("Niszczyciel");
+end

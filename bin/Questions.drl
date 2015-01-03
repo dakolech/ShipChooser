@@ -1,0 +1,18 @@
+package com.sample
+
+import com.sample.DroolsTest.*;
+import com.sample.facts.*;
+import com.sample.UserInterface.*;
+
+
+rule "Drewniany" 
+	when
+	then
+		//System.out.println("Czy statek jest drewniany?\n");
+		//boolean input = true;			
+		//insert(new Pytanie("bin", {"Tak","Nie"}, "Czy statek jest drewniany?"));
+		Pytanie pytanie = new Pytanie("bin", "Czy statek jest drewniany?");
+		int input = pytanie.zadajPytanie();
+		insert(new Drewniany(input));	
+end 
+
