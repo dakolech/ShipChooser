@@ -20,7 +20,7 @@
 <org.drools.audit.event.ObjectLogEvent>
   <type>1</type>
   <factId>1</factId>
-  <objectToString>com.sample.Facts$Wojskowy@48e92c5c</objectToString>
+  <objectToString>com.sample.Facts$Wojskowy@561868a0</objectToString>
 </org.drools.audit.event.ObjectLogEvent>
 <org.drools.audit.event.ActivationLogEvent>
   <type>7</type>
@@ -36,14 +36,14 @@
 </org.drools.audit.event.ActivationLogEvent>
 <org.drools.audit.event.ActivationLogEvent>
   <type>4</type>
-  <activationId>Podowodny [0]</activationId>
-  <rule>Podowodny</rule>
+  <activationId>Podwodny [0]</activationId>
+  <rule>Podwodny</rule>
   <declarations></declarations>
 </org.drools.audit.event.ActivationLogEvent>
 <org.drools.audit.event.ObjectLogEvent>
   <type>1</type>
   <factId>2</factId>
-  <objectToString>com.sample.Facts$Ladowanie@79179359</objectToString>
+  <objectToString>com.sample.Facts$Ladowanie@525575</objectToString>
 </org.drools.audit.event.ObjectLogEvent>
 <org.drools.audit.event.ActivationLogEvent>
   <type>7</type>
@@ -53,8 +53,8 @@
 </org.drools.audit.event.ActivationLogEvent>
 <org.drools.audit.event.ActivationLogEvent>
   <type>6</type>
-  <activationId>Podowodny [0]</activationId>
-  <rule>Podowodny</rule>
+  <activationId>Podwodny [0]</activationId>
+  <rule>Podwodny</rule>
   <declarations></declarations>
 </org.drools.audit.event.ActivationLogEvent>
 <org.drools.audit.event.ActivationLogEvent>
@@ -66,12 +66,12 @@
 <org.drools.audit.event.ObjectLogEvent>
   <type>1</type>
   <factId>3</factId>
-  <objectToString>com.sample.Facts$Podwodny@6995bf68</objectToString>
+  <objectToString>com.sample.Facts$Podwodny@18a136ac</objectToString>
 </org.drools.audit.event.ObjectLogEvent>
 <org.drools.audit.event.ActivationLogEvent>
   <type>7</type>
-  <activationId>Podowodny [0]</activationId>
-  <rule>Podowodny</rule>
+  <activationId>Podwodny [0]</activationId>
+  <rule>Podwodny</rule>
   <declarations></declarations>
 </org.drools.audit.event.ActivationLogEvent>
 <org.drools.audit.event.ActivationLogEvent>
@@ -89,7 +89,7 @@
 <org.drools.audit.event.ObjectLogEvent>
   <type>1</type>
   <factId>4</factId>
-  <objectToString>com.sample.Facts$Atomowy@6e950bcf</objectToString>
+  <objectToString>com.sample.Facts$Atomowy@517d4a0d</objectToString>
 </org.drools.audit.event.ObjectLogEvent>
 <org.drools.audit.event.ActivationLogEvent>
   <type>7</type>

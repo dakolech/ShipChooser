@@ -10,8 +10,29 @@ rule "Niszczyciel"
 		exists Wojskowy(value == 1)
 		exists Ladowanie(value == 0)
 		exists Podwodny(value == 0)
+		exists WojskowyTyp(value == 0)
 	then
-		Odpowiedz odpowiedz = new Odpowiedz("Niszczyciel");
+		Odpowiedz odpowiedz = new Odpowiedz("Niszczyciel", "Niszczyciel");
+end
+
+rule "Krazownik"
+	when
+		exists Wojskowy(value == 1)
+		exists Ladowanie(value == 0)
+		exists Podwodny(value == 0)
+		exists WojskowyTyp(value == 1)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Krazownik", "Krazownik");
+end
+
+rule "Pancernik"
+	when
+		exists Wojskowy(value == 1)
+		exists Ladowanie(value == 0)
+		exists Podwodny(value == 0)
+		exists WojskowyTyp(value == 2)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Pancernik", "Pancernik");
 end
 
 rule "Lotniskowiec"
@@ -20,7 +41,7 @@ rule "Lotniskowiec"
 		exists Ladowanie(value == 1)
 		exists Samoloty(value == 1)
 	then
-		Odpowiedz odpowiedz = new Odpowiedz("Lotniskowiec");
+		Odpowiedz odpowiedz = new Odpowiedz("Lotniskowiec", "Lotniskowiec");
 end
 
 rule "Smiglowcowiec"
@@ -30,7 +51,7 @@ rule "Smiglowcowiec"
 		exists Samoloty(value == 0)
 		exists Smiglowce(value == 1)
 	then
-		Odpowiedz odpowiedz = new Odpowiedz("Smiglowcowiec");
+		Odpowiedz odpowiedz = new Odpowiedz("Smiglowcowiec", "Smiglowcowiec");
 end
 
 rule "Lotniskowiec dla niezidentyfikowanych obiektow latajacych"
@@ -40,17 +61,17 @@ rule "Lotniskowiec dla niezidentyfikowanych obiektow latajacych"
 		exists Samoloty(value == 0)
 		exists Smiglowce(value == 0)
 	then
-		Odpowiedz odpowiedz = new Odpowiedz("Lotniskowiec dla niezidentyfikowanych obiektow latajacych");
+		Odpowiedz odpowiedz = new Odpowiedz("Lotniskowiec dla niezidentyfikowanych obiektow latajacych", "Ldnol");
 end
 
 rule "Lodz podwodna"
-	when
+	when 
 		exists Wojskowy(value == 1)
 		exists Ladowanie(value == 0)
 		exists Podwodny(value == 1)
 		exists Atomowy(value == 0)
 	then
-		Odpowiedz odpowiedz = new Odpowiedz("Lodz podwodna");
+		Odpowiedz odpowiedz = new Odpowiedz("Lodz podwodna", "Lp");
 end
 
 rule "Atomowa lodz podwodna"
@@ -60,5 +81,5 @@ rule "Atomowa lodz podwodna"
 		exists Podwodny(value == 1)
 		exists Atomowy(value == 1)
 	then
-		Odpowiedz odpowiedz = new Odpowiedz("Atomowa lodz podwodna");
+		Odpowiedz odpowiedz = new Odpowiedz("Atomowa lodz podwodna", "Alp");
 end

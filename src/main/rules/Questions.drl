@@ -43,7 +43,7 @@ rule "Smiglowce"
 		insert(new Smiglowce(input));	
 end 
 
-rule "Podowodny" 
+rule "Podwodny" 
 	when
 		exists Wojskowy(value == 1)
 		exists Ladowanie(value == 0)
@@ -63,6 +63,17 @@ rule "Atomowa"
 		int input = pytanie.zadajPytanie();
 		insert(new Atomowy(input));	
 end 
+
+rule "Wojskowy typ"
+	when
+		exists Wojskowy(value == 1)
+		exists Ladowanie(value == 0)
+		exists Podwodny(value == 0)
+	then
+		Pytanie pytanie = new Pytanie("wojskZad", "Jaki jest typ statku?");
+		int input = pytanie.zadajPytanie();
+		insert(new WojskowyTyp(input));	
+end
 
 /*
 rule "Drewniany" 

@@ -18,6 +18,15 @@ public class Facts {
 		}
 	}
 	
+	public static class WojskowyTyp {
+		public int value;
+		
+		public WojskowyTyp(int v) {
+			value = v;
+		}
+	}
+	
+	
 	public static class Transportowy {
 		public int value;
 		

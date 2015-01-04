@@ -73,6 +73,16 @@ public class UserInterface {
 					    null,
 					    options,
 					    options[0]);				
+			} else if (typ == "wojskZad") {
+				Object[] options = {"Szybki, wielozadaniowy","Du¿y, silnie uzbrojony", "Wielki, powolny, silnie opancerzony i uzbrojony"};
+				n = JOptionPane.showOptionDialog(null,
+					    tresc,
+					    tytul,
+					    JOptionPane.YES_NO_CANCEL_OPTION,
+					    JOptionPane.QUESTION_MESSAGE,
+					    null,
+					    options,
+					    options[0]);				
 			}
 			return n;
 		}
