@@ -1,43 +1,112 @@
 <object-stream>
 <org.drools.audit.event.ActivationLogEvent>
   <type>4</type>
-  <activationId>Drewniany [0]</activationId>
-  <rule>Drewniany</rule>
+  <activationId>Wojskowy [0]</activationId>
+  <rule>Wojskowy</rule>
   <declarations></declarations>
 </org.drools.audit.event.ActivationLogEvent>
 <org.drools.audit.event.ActivationLogEvent>
   <type>6</type>
-  <activationId>Drewniany [0]</activationId>
-  <rule>Drewniany</rule>
+  <activationId>Wojskowy [0]</activationId>
+  <rule>Wojskowy</rule>
   <declarations></declarations>
 </org.drools.audit.event.ActivationLogEvent>
 <org.drools.audit.event.ActivationLogEvent>
   <type>4</type>
-  <activationId>Niszczyciel [0]</activationId>
-  <rule>Niszczyciel</rule>
+  <activationId>Ladowanie [0]</activationId>
+  <rule>Ladowanie</rule>
   <declarations></declarations>
 </org.drools.audit.event.ActivationLogEvent>
 <org.drools.audit.event.ObjectLogEvent>
   <type>1</type>
   <factId>1</factId>
-  <objectToString>com.sample.facts$Drewniany@27eedb64</objectToString>
+  <objectToString>com.sample.Facts$Wojskowy@48e92c5c</objectToString>
 </org.drools.audit.event.ObjectLogEvent>
 <org.drools.audit.event.ActivationLogEvent>
   <type>7</type>
-  <activationId>Drewniany [0]</activationId>
-  <rule>Drewniany</rule>
+  <activationId>Wojskowy [0]</activationId>
+  <rule>Wojskowy</rule>
   <declarations></declarations>
 </org.drools.audit.event.ActivationLogEvent>
 <org.drools.audit.event.ActivationLogEvent>
   <type>6</type>
-  <activationId>Niszczyciel [0]</activationId>
-  <rule>Niszczyciel</rule>
+  <activationId>Ladowanie [0]</activationId>
+  <rule>Ladowanie</rule>
+  <declarations></declarations>
+</org.drools.audit.event.ActivationLogEvent>
+<org.drools.audit.event.ActivationLogEvent>
+  <type>4</type>
+  <activationId>Podowodny [0]</activationId>
+  <rule>Podowodny</rule>
+  <declarations></declarations>
+</org.drools.audit.event.ActivationLogEvent>
+<org.drools.audit.event.ObjectLogEvent>
+  <type>1</type>
+  <factId>2</factId>
+  <objectToString>com.sample.Facts$Ladowanie@79179359</objectToString>
+</org.drools.audit.event.ObjectLogEvent>
+<org.drools.audit.event.ActivationLogEvent>
+  <type>7</type>
+  <activationId>Ladowanie [0]</activationId>
+  <rule>Ladowanie</rule>
+  <declarations></declarations>
+</org.drools.audit.event.ActivationLogEvent>
+<org.drools.audit.event.ActivationLogEvent>
+  <type>6</type>
+  <activationId>Podowodny [0]</activationId>
+  <rule>Podowodny</rule>
+  <declarations></declarations>
+</org.drools.audit.event.ActivationLogEvent>
+<org.drools.audit.event.ActivationLogEvent>
+  <type>4</type>
+  <activationId>Atomowa [0]</activationId>
+  <rule>Atomowa</rule>
+  <declarations></declarations>
+</org.drools.audit.event.ActivationLogEvent>
+<org.drools.audit.event.ObjectLogEvent>
+  <type>1</type>
+  <factId>3</factId>
+  <objectToString>com.sample.Facts$Podwodny@6995bf68</objectToString>
+</org.drools.audit.event.ObjectLogEvent>
+<org.drools.audit.event.ActivationLogEvent>
+  <type>7</type>
+  <activationId>Podowodny [0]</activationId>
+  <rule>Podowodny</rule>
+  <declarations></declarations>
+</org.drools.audit.event.ActivationLogEvent>
+<org.drools.audit.event.ActivationLogEvent>
+  <type>6</type>
+  <activationId>Atomowa [0]</activationId>
+  <rule>Atomowa</rule>
+  <declarations></declarations>
+</org.drools.audit.event.ActivationLogEvent>
+<org.drools.audit.event.ActivationLogEvent>
+  <type>4</type>
+  <activationId>Atomowa lodz podwodna [0]</activationId>
+  <rule>Atomowa lodz podwodna</rule>
+  <declarations></declarations>
+</org.drools.audit.event.ActivationLogEvent>
+<org.drools.audit.event.ObjectLogEvent>
+  <type>1</type>
+  <factId>4</factId>
+  <objectToString>com.sample.Facts$Atomowy@6e950bcf</objectToString>
+</org.drools.audit.event.ObjectLogEvent>
+<org.drools.audit.event.ActivationLogEvent>
+  <type>7</type>
+  <activationId>Atomowa [0]</activationId>
+  <rule>Atomowa</rule>
+  <declarations></declarations>
+</org.drools.audit.event.ActivationLogEvent>
+<org.drools.audit.event.ActivationLogEvent>
+  <type>6</type>
+  <activationId>Atomowa lodz podwodna [0]</activationId>
+  <rule>Atomowa lodz podwodna</rule>
   <declarations></declarations>
 </org.drools.audit.event.ActivationLogEvent>
 <org.drools.audit.event.ActivationLogEvent>
   <type>7</type>
-  <activationId>Niszczyciel [0]</activationId>
-  <rule>Niszczyciel</rule>
+  <activationId>Atomowa lodz podwodna [0]</activationId>
+  <rule>Atomowa lodz podwodna</rule>
   <declarations></declarations>
 </org.drools.audit.event.ActivationLogEvent>
 </object-stream>

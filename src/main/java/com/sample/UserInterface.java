@@ -12,9 +12,8 @@ public class UserInterface {
 		
 		public Pytanie (String t, String tr) {
 			typ = t;
-			//options = o;
 			tresc = tr;
-			tytul = "ShipsChooser";
+			tytul = "ShipChooser";
 			
 			/*
 			Object[] options = {"Yes, please",
@@ -40,6 +39,36 @@ public class UserInterface {
 					    tresc,
 					    tytul,
 					    JOptionPane.YES_NO_OPTION,
+					    JOptionPane.QUESTION_MESSAGE,
+					    null,
+					    options,
+					    options[0]);				
+			} else if (typ == "cena") {
+				Object[] options = {"Tani","Sredni","Drogi"};
+				n = JOptionPane.showOptionDialog(null,
+					    tresc,
+					    tytul,
+					    JOptionPane.YES_NO_CANCEL_OPTION,
+					    JOptionPane.QUESTION_MESSAGE,
+					    null,
+					    options,
+					    options[0]);				
+			} else if (typ == "iloscLudzi") {
+				Object[] options = {"Malo","Srednio","Duzo"};
+				n = JOptionPane.showOptionDialog(null,
+					    tresc,
+					    tytul,
+					    JOptionPane.YES_NO_CANCEL_OPTION,
+					    JOptionPane.QUESTION_MESSAGE,
+					    null,
+					    options,
+					    options[0]);				
+			} else if (typ == "rozmiar") {
+				Object[] options = {"Maly","Sredni", "Duzy", "Ogromny"};
+				n = JOptionPane.showOptionDialog(null,
+					    tresc,
+					    tytul,
+					    JOptionPane.YES_NO_CANCEL_OPTION,
 					    JOptionPane.QUESTION_MESSAGE,
 					    null,
 					    options,

@@ -1,20 +1,64 @@
 package com.sample
 
 import com.sample.DroolsTest.*;
-import com.sample.facts.*;
+import com.sample.Facts.*;
 import com.sample.UserInterface.*;
-
-
-rule "Zaglowiec"
-	when
-		exists Drewniany(value == 1)
-	then
-		System.out.println("Zaglowiec");
-end
+import com.sample.Answers.*;
 
 rule "Niszczyciel"
 	when
-		exists Drewniany(value == 0)
+		exists Wojskowy(value == 1)
+		exists Ladowanie(value == 0)
+		exists Podwodny(value == 0)
 	then
-		System.out.println("Niszczyciel");
+		Odpowiedz odpowiedz = new Odpowiedz("Niszczyciel");
+end
+
+rule "Lotniskowiec"
+	when
+		exists Wojskowy(value == 1)
+		exists Ladowanie(value == 1)
+		exists Samoloty(value == 1)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Lotniskowiec");
+end
+
+rule "Smiglowcowiec"
+	when
+		exists Wojskowy(value == 1)
+		exists Ladowanie(value == 1)
+		exists Samoloty(value == 0)
+		exists Smiglowce(value == 1)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Smiglowcowiec");
+end
+
+rule "Lotniskowiec dla niezidentyfikowanych obiektow latajacych"
+	when
+		exists Wojskowy(value == 1)
+		exists Ladowanie(value == 1)
+		exists Samoloty(value == 0)
+		exists Smiglowce(value == 0)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Lotniskowiec dla niezidentyfikowanych obiektow latajacych");
+end
+
+rule "Lodz podwodna"
+	when
+		exists Wojskowy(value == 1)
+		exists Ladowanie(value == 0)
+		exists Podwodny(value == 1)
+		exists Atomowy(value == 0)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Lodz podwodna");
+end
+
+rule "Atomowa lodz podwodna"
+	when
+		exists Wojskowy(value == 1)
+		exists Ladowanie(value == 0)
+		exists Podwodny(value == 1)
+		exists Atomowy(value == 1)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Atomowa lodz podwodna");
 end

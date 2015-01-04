@@ -12,7 +12,7 @@ import org.drools.logger.KnowledgeRuntimeLogger;
 import org.drools.logger.KnowledgeRuntimeLoggerFactory;
 import org.drools.runtime.StatefulKnowledgeSession;
 
-import com.sample.facts.*;
+//import com.sample.Facts.*;
 
 /**
  * This is a sample class to launch a rule.

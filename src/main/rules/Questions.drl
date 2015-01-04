@@ -1,18 +1,77 @@
 package com.sample
 
 import com.sample.DroolsTest.*;
-import com.sample.facts.*;
+import com.sample.Facts.*;
 import com.sample.UserInterface.*;
 
 
+rule "Wojskowy" 
+	when
+	then 
+		Pytanie pytanie = new Pytanie("bin", "Czy statek nalezy do wojska?");
+		int input = pytanie.zadajPytanie();
+		insert(new Wojskowy(input));	
+end 
+
+rule "Ladowanie" 
+	when
+		exists Wojskowy(value == 1)
+	then 
+		Pytanie pytanie = new Pytanie("bin", "Czy na statku moga ladowac pojazdy powietrzne?");
+		int input = pytanie.zadajPytanie();
+		insert(new Ladowanie(input));	
+end 
+
+rule "Samoloty" 
+	when
+		exists Wojskowy(value == 1)
+		exists Ladowanie(value == 1)
+	then 
+		Pytanie pytanie = new Pytanie("bin", "Czy na statku laduja glownie samoloty?");
+		int input = pytanie.zadajPytanie();
+		insert(new Samoloty(input));	
+end 
+
+rule "Smiglowce" 
+	when
+		exists Wojskowy(value == 1)
+		exists Ladowanie(value == 1)
+		exists Samoloty(value == 0)
+	then 
+		Pytanie pytanie = new Pytanie("bin", "Czy na statku laduja tylko smiglowce?");
+		int input = pytanie.zadajPytanie();
+		insert(new Smiglowce(input));	
+end 
+
+rule "Podowodny" 
+	when
+		exists Wojskowy(value == 1)
+		exists Ladowanie(value == 0)
+	then 
+		Pytanie pytanie = new Pytanie("bin", "Czy statek moze sie w pelni zanurzac?");
+		int input = pytanie.zadajPytanie();
+		insert(new Podwodny(input));	
+end 
+
+rule "Atomowa" 
+	when
+		exists Wojskowy(value == 1)
+		exists Ladowanie(value == 0)
+		exists Podwodny(value == 1)
+	then 
+		Pytanie pytanie = new Pytanie("bin", "Czy statek posiada bombe atomowa?");
+		int input = pytanie.zadajPytanie();
+		insert(new Atomowy(input));	
+end 
+
+/*
 rule "Drewniany" 
 	when
-	then
-		//System.out.println("Czy statek jest drewniany?\n");
-		//boolean input = true;			
-		//insert(new Pytanie("bin", {"Tak","Nie"}, "Czy statek jest drewniany?"));
+	then 
+		Pytanie pytanie1 = new Pytanie("rozmiar", "Czy statek jest drewniany?");
+		int input1 = pytanie1.zadajPytanie();
 		Pytanie pytanie = new Pytanie("bin", "Czy statek jest drewniany?");
 		int input = pytanie.zadajPytanie();
 		insert(new Drewniany(input));	
-end 
+end */
 
