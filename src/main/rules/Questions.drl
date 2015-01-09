@@ -5,84 +5,231 @@ import com.sample.Facts.*;
 import com.sample.UserInterface.*;
 
 
-rule "Wojskowy" 
+rule "Cena"
 	when
-	then 
-		Pytanie pytanie = new Pytanie("bin", "Czy statek nalezy do wojska?");
-		int input = pytanie.zadajPytanie();
-		insert(new Wojskowy(input));	
-end 
-
-rule "Ladowanie" 
-	when
-		exists Wojskowy(value == 1)
-	then 
-		Pytanie pytanie = new Pytanie("bin", "Czy na statku moga ladowac pojazdy powietrzne?");
-		int input = pytanie.zadajPytanie();
-		insert(new Ladowanie(input));	
-end 
-
-rule "Samoloty" 
-	when
-		exists Wojskowy(value == 1)
-		exists Ladowanie(value == 1)
-	then 
-		Pytanie pytanie = new Pytanie("bin", "Czy na statku laduja glownie samoloty?");
-		int input = pytanie.zadajPytanie();
-		insert(new Samoloty(input));	
-end 
-
-rule "Smiglowce" 
-	when
-		exists Wojskowy(value == 1)
-		exists Ladowanie(value == 1)
-		exists Samoloty(value == 0)
-	then 
-		Pytanie pytanie = new Pytanie("bin", "Czy na statku laduja tylko smiglowce?");
-		int input = pytanie.zadajPytanie();
-		insert(new Smiglowce(input));	
-end 
-
-rule "Podwodny" 
-	when
-		exists Wojskowy(value == 1)
-		exists Ladowanie(value == 0)
-	then 
-		Pytanie pytanie = new Pytanie("bin", "Czy statek moze sie w pelni zanurzac?");
-		int input = pytanie.zadajPytanie();
-		insert(new Podwodny(input));	
-end 
-
-rule "Atomowa" 
-	when
-		exists Wojskowy(value == 1)
-		exists Ladowanie(value == 0)
-		exists Podwodny(value == 1)
-	then 
-		Pytanie pytanie = new Pytanie("bin", "Czy statek posiada bombe atomowa?");
-		int input = pytanie.zadajPytanie();
-		insert(new Atomowy(input));	
-end 
-
-rule "Wojskowy typ"
-	when
-		exists Wojskowy(value == 1)
-		exists Ladowanie(value == 0)
-		exists Podwodny(value == 0)
+		exists(IsRunning())
 	then
-		Pytanie pytanie = new Pytanie("wojskZad", "Jaki jest typ statku?");
+		Pytanie pytanie = new Pytanie("cena", "Jakim bud¿etem dysponujemy?");
 		int input = pytanie.zadajPytanie();
-		insert(new WojskowyTyp(input));	
+		insert(new Cena(input));
 end
 
-/*
-rule "Drewniany" 
+rule "LiczbaLudzi"
 	when
-	then 
-		Pytanie pytanie1 = new Pytanie("rozmiar", "Czy statek jest drewniany?");
-		int input1 = pytanie1.zadajPytanie();
-		Pytanie pytanie = new Pytanie("bin", "Czy statek jest drewniany?");
+		exists(IsRunning())
+		exists(Cena())
+	then
+		Pytanie pytanie = new Pytanie("liczbaLudzi", "Jak du¿o ludzi ma pomieœciæ statek?");
 		int input = pytanie.zadajPytanie();
-		insert(new Drewniany(input));	
-end */
+		insert(new LiczbaLudzi(input));
+end
 
+rule "Rozmiar"
+	when
+		exists(IsRunning())
+		exists(Cena())
+	then
+		Pytanie pytanie = new Pytanie("rozmiar", "Jakich rozmiarów ma to byæ statek?");
+		int input = pytanie.zadajPytanie();
+		insert(new Rozmiar(input));
+end
+
+rule "Wytrzymalosc"
+	when
+		exists(IsRunning())
+		exists(Cena(value > 1))
+	then
+		Pytanie pytanie = new Pytanie("bin", "Czy ma byæ bardzo wytrzyma³y?");
+		int input = pytanie.zadajPytanie();
+		insert(new Ladowanie(input));
+end
+
+rule "Wojskowy"
+	when
+		exists(IsRunning())
+		exists(Wytrzymalosc(value == 1))
+	then
+		Pytanie pytanie = new Pytanie("bin", "Czy ma to byæ statek wojskowy?");
+		int input = pytanie.zadajPytanie();
+		insert(new Wojskowy(input));
+end
+
+rule "WojskowyTyp"
+	when
+		exists(IsRunning())
+		exists(Wojskowy(value == 1))
+	then
+		Pytanie pytanie = new Pytanie("bin", "Wojskowy - jakiego typu?");
+		int input = pytanie.zadajPytanie();
+		insert(new WojskowyTyp(input));
+end
+
+rule "DlugaPodroz"
+	when
+		exists(IsRunning())
+		exists(Cena(value > 1))		//Przynajmniej œredniej ceny
+		not Rzeczny(value == 1)
+	then
+		Pytanie pytanie = new Pytanie("bin", "Czy ma pokonywaæ bardzo du¿e dystanse?");
+		int input = pytanie.zadajPytanie();
+		insert(new DlugaPodroz(input));
+end
+
+rule "Rzeczny"
+	when
+		exists(IsRunning())
+		not DlugaPodroz(value == 1)
+		exists(Rozmiar(value < 2))
+	then
+		Pytanie pytanie = new Pytanie("bin", "Czy statek bêdzie wykorzystywany na rzece?");
+		int input = pytanie.zadajPytanie();
+		insert(new Rzeczny(input));
+end
+
+rule "Drewniany"
+	when
+		exists(IsRunning())
+		exists(Wojskowy(value == 0))
+	then
+		Pytanie pytanie = new Pytanie("bin", "Czy ma byæ zbudowany z drewna?");
+		int input = pytanie.zadajPytanie();
+		insert(new Drewniany(input));
+end
+
+rule "Transportowy"
+	when
+		exists(IsRunning())
+		exists(Wytrzymalosc(value == 1))
+		exists(Kapitan(value == 1))
+	then
+		Pytanie pytanie = new Pytanie("bin", "Czy statek ma byæ u¿ywany w celach transportowych?");
+		int input = pytanie.zadajPytanie();
+		insert(new Transportowy(input));
+end
+
+rule "Podwodny"
+	when
+		exists(IsRunning())
+		exists(Cena())
+	then
+		Pytanie pytanie = new Pytanie("bin", "Czy ma mieæ mo¿liwoœæ p³ywania pod wod¹?");
+		int input = pytanie.zadajPytanie();
+		insert(new Podwodny(input));
+end
+
+rule "Zagle"
+	when
+		exists(IsRunning())
+		exists(Cena(value > 1))
+	then
+		Pytanie pytanie = new Pytanie("bin", "Czy statek ma posiadaæ ¿agle?");
+		int input = pytanie.zadajPytanie();
+		insert(new Zagle(input));
+end
+
+rule "Ladowy"
+	when
+		exists(IsRunning())
+		not Wiosla(value == 1)
+		exists(Rzeczny(value == 1))
+	then
+		Pytanie pytanie = new Pytanie("bin", "Czy ma poruszaæ siê równie¿ po l¹dzie?");
+		int input = pytanie.zadajPytanie();
+		insert(new Ladowy(input));
+end
+
+rule "Wiosla"
+	when
+		exists(IsRunning())
+		not Ladowy(value == 1)
+		exists(Rzeczny(value == 1))
+	then
+		Pytanie pytanie = new Pytanie("bin", "Czy statek ma posiadaæ wios³a?");
+		int input = pytanie.zadajPytanie();
+		insert(new Wiosla(input));
+end
+
+rule "Ladowanie"
+	when
+		exists(IsRunning())
+		exists(WojskowyTyp(value == 2))
+	then
+		Pytanie pytanie = new Pytanie("bin", "Czy statek ma mieæ pok³ad przystosowany do l¹dowania maszyn powietrznych?");
+		int input = pytanie.zadajPytanie();
+		insert(new Ladowanie(input));
+end
+
+rule "Samoloty"
+	when
+		exists(IsRunning())
+		exists(Ladowanie(value == 1))
+		not Smiglowce(value == 1)
+	then
+		Pytanie pytanie = new Pytanie("bin", "L¹dowanie samolotów?");
+		int input = pytanie.zadajPytanie();
+		insert(new Samoloty(input));
+end
+
+rule "Smiglowce"
+	when
+		exists(IsRunning())
+		exists(Ladowanie(value == 1))
+		not Samoloty(value == 1)
+	then
+		Pytanie pytanie = new Pytanie("bin", "L¹dowanie helikopterów?");
+		int input = pytanie.zadajPytanie();
+		insert(new Smiglowce(input));
+end
+
+rule "Praca" 
+	when
+		exists(IsRunning())
+		exists Cena()
+		not Wojskowy(value == 1)
+	then
+		Pytanie pytanie = new Pytanie("bin", "Czy bêdzie wykorzystywany w celach zawdowych?");
+		int input = pytanie.zadajPytanie();
+		insert(new Praca(input));
+end
+
+rule "Kapitan"
+	when
+		exists(IsRunning())
+		exists(LiczbaLudzi(value > 0))
+	then
+		Pytanie pytanie = new Pytanie("bin", "Czy statek powinien mieæ kapitana?");
+		int input = pytanie.zadajPytanie();
+		insert(new Kapitan(input));
+end
+
+rule "Atomowy"
+	when
+		exists(IsRunning())
+		exists(Wojskowy(value == 1))
+		exists(DlugaPodroz(value == 1))
+	then
+		Pytanie pytanie = new Pytanie("bin", "Czy statek ma posiadaæ napêd atomowy?");
+		int input = pytanie.zadajPytanie();
+		insert(new Atomowy(input));
+end
+
+rule "Indianski"
+	when
+		exists(IsRunning())
+		exists(Drewniany(value == 1))
+		exists(Wiosla(value == 1))
+	then
+		Pytanie pytanie = new Pytanie("bin", "Czy statek ma nawi¹zywaæ do plemion indiañskich?");
+		int input = pytanie.zadajPytanie();
+		insert(new Indianski(input));
+end
+
+rule "Kontenery"
+	when
+		exists(IsRunning())
+		exists(Transportowy(value == 1))
+	then
+		Pytanie pytanie = new Pytanie("bin", "Czy maj¹ byæ nim przewo¿one kontenery?");
+		int input = pytanie.zadajPytanie();
+		insert(new Kontenery(input));
+end

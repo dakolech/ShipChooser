@@ -12,6 +12,9 @@ import org.drools.logger.KnowledgeRuntimeLogger;
 import org.drools.logger.KnowledgeRuntimeLoggerFactory;
 import org.drools.runtime.StatefulKnowledgeSession;
 
+import com.sample.Facts.IsRunning;
+
+
 //import com.sample.Facts.*;
 
 /**
@@ -19,17 +22,20 @@ import org.drools.runtime.StatefulKnowledgeSession;
  */
 public class DroolsTest {
 
-    public static final void main(String[] args) {
+	public static final void main(String[] args) {
         try {
             // load up the knowledge base
             KnowledgeBase kbase = readKnowledgeBase();
             StatefulKnowledgeSession ksession = kbase.newStatefulKnowledgeSession();
             KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newFileLogger(ksession, "test");
             // go !
+            /*
             Message message = new Message();
             message.setMessage("Hello World");
             message.setStatus(Message.HELLO);
-            //ksession.insert(message);
+            ksession.insert(message);
+            */
+            ksession.insert(new IsRunning());
             ksession.fireAllRules();
             logger.close();
         } catch (Throwable t) {
@@ -39,7 +45,7 @@ public class DroolsTest {
 
     private static KnowledgeBase readKnowledgeBase() throws Exception {
         KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
-        kbuilder.add(ResourceFactory.newClassPathResource("Sample.drl"), ResourceType.DRL);
+        //kbuilder.add(ResourceFactory.newClassPathResource("Sample.drl"), ResourceType.DRL);
         kbuilder.add(ResourceFactory.newClassPathResource("Ships.drl"), ResourceType.DRL);
         kbuilder.add(ResourceFactory.newClassPathResource("Questions.drl"), ResourceType.DRL);
         KnowledgeBuilderErrors errors = kbuilder.getErrors();
@@ -53,7 +59,7 @@ public class DroolsTest {
         kbase.addKnowledgePackages(kbuilder.getKnowledgePackages());
         return kbase;
     }
-
+    /*
     public static class Message {
 
         public static final int HELLO = 0;
@@ -80,5 +86,5 @@ public class DroolsTest {
         }
 
     }
-
+	*/
 }

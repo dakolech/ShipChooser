@@ -7,9 +7,11 @@ import java.awt.LayoutManager;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.OverlayLayout;
+
+import com.sample.DroolsTest;
 
 public class Answers {
 
@@ -26,6 +28,7 @@ public class Answers {
                     "",
                     "Twoj statek to: " + value, JOptionPane.INFORMATION_MESSAGE,
                     icon);*/
+			
 			JFrame frame = new JFrame("Twoj statek");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

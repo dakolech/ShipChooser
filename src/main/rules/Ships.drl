@@ -5,81 +5,314 @@ import com.sample.Facts.*;
 import com.sample.UserInterface.*;
 import com.sample.Answers.*;
 
-rule "Niszczyciel"
+
+rule "Amfibia"
 	when
+		isRunning : IsRunning()
+		exists Ladowy(value == 1)
 		exists Wojskowy(value == 1)
-		exists Ladowanie(value == 0)
-		exists Podwodny(value == 0)
-		exists WojskowyTyp(value == 0)
 	then
-		Odpowiedz odpowiedz = new Odpowiedz("Niszczyciel", "Niszczyciel");
+		Odpowiedz odpowiedz = new Odpowiedz("Amfibia", "amfibia");
+		retract (isRunning);
+end
+
+rule "Atomowa lodz podwodna"
+	when
+		isRunning : IsRunning()
+		exists Atomowy(value == 1)
+		exists Podwodny(value == 1)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Atomowa ³ódŸ podwodna", "alp");
+		retract (isRunning);
+end
+
+rule "Barka"
+	when
+		isRunning : IsRunning()
+		exists Praca(value == 1)
+		exists Transportowy(value == 1)
+		exists Rzeczny(value == 1)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Barka", "barka");
+		retract (isRunning);
+end
+
+rule "Batyskaf"
+	when
+		isRunning : IsRunning()
+		exists Podwodny(value == 1)
+		exists Praca(value == 1)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Batyskaf", "batyskaf");
+		retract (isRunning);
+end
+
+rule "Jacht"
+	when
+		isRunning : IsRunning()
+		exists Cena(value <= 2)
+		exists Rozmiar(value == 1)
+		exists Rzeczny(value == 1)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Jacht", "jacht");
+		retract (isRunning);
+end
+
+rule "Kajak"
+	when
+		isRunning : IsRunning()
+		exists Cena(value <= 1)
+		exists Wiosla(value == 1)
+		exists Drewniany(value == 0)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Kajak", "kajak");
+		retract (isRunning);
+end
+
+rule "Kanu"
+	when
+		isRunning : IsRunning()
+		exists Indianski(value == 1)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Kanu", "kanu");
+		retract (isRunning);
+end
+
+rule "Katamaran"
+	when
+		isRunning : IsRunning()
+		exists DlugaPodroz(value == 1)
+		exists Zagle(value == 1)
+		exists Drewniany(value == 0)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Katamaran ¿aglowy", "katamaran");
+		retract (isRunning);
+end
+
+rule "Kontenerowiec"
+	when
+		isRunning : IsRunning()
+		exists Kontenery(value == 1)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Kontenerowiec", "kontenerowiec");
+		retract (isRunning);
 end
 
 rule "Krazownik"
 	when
-		exists Wojskowy(value == 1)
-		exists Ladowanie(value == 0)
-		exists Podwodny(value == 0)
+		isRunning : IsRunning()
 		exists WojskowyTyp(value == 1)
+		exists DlugaPodroz(value == 1)
 	then
-		Odpowiedz odpowiedz = new Odpowiedz("Krazownik", "Krazownik");
+		Odpowiedz odpowiedz = new Odpowiedz("Kr¹¿ownik", "krazownik");
+		retract (isRunning);
 end
 
-rule "Pancernik"
+rule "Kuter"
 	when
-		exists Wojskowy(value == 1)
-		exists Ladowanie(value == 0)
-		exists Podwodny(value == 0)
-		exists WojskowyTyp(value == 2)
+		isRunning : IsRunning()
+		exists Praca(value == 1)
+		exists Transportowy(value == 0)
+		exists Cena(value <= 2)
 	then
-		Odpowiedz odpowiedz = new Odpowiedz("Pancernik", "Pancernik");
+		Odpowiedz odpowiedz = new Odpowiedz("Kuter rybacki", "kuter");
+		retract (isRunning);
+end
+
+rule "Lodolamacz"
+	when
+		isRunning : IsRunning()
+		exists Praca(value == 1)
+		exists Transportowy(value == 0)
+		exists Wytrzymalosc(value == 1)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Lodo³amacz", "lodolamacz");
+		retract (isRunning);
 end
 
 rule "Lotniskowiec"
 	when
-		exists Wojskowy(value == 1)
-		exists Ladowanie(value == 1)
+		isRunning : IsRunning()
 		exists Samoloty(value == 1)
 	then
-		Odpowiedz odpowiedz = new Odpowiedz("Lotniskowiec", "Lotniskowiec");
-end
-
-rule "Smiglowcowiec"
-	when
-		exists Wojskowy(value == 1)
-		exists Ladowanie(value == 1)
-		exists Samoloty(value == 0)
-		exists Smiglowce(value == 1)
-	then
-		Odpowiedz odpowiedz = new Odpowiedz("Smiglowcowiec", "Smiglowcowiec");
+		Odpowiedz odpowiedz = new Odpowiedz("Lotniskowiec", "lotniskowiec");
+		retract (isRunning);
 end
 
 rule "Lotniskowiec dla niezidentyfikowanych obiektow latajacych"
 	when
-		exists Wojskowy(value == 1)
-		exists Ladowanie(value == 1)
+		isRunning : IsRunning()
 		exists Samoloty(value == 0)
 		exists Smiglowce(value == 0)
 	then
-		Odpowiedz odpowiedz = new Odpowiedz("Lotniskowiec dla niezidentyfikowanych obiektow latajacych", "Ldnol");
+		Odpowiedz odpowiedz = new Odpowiedz("Lotniskowiec dla niezidentyfikowanych obiektów lataj¹cych", "ldnol");
+		retract (isRunning);
+end
+
+rule "Lodka"
+	when
+		isRunning : IsRunning()
+		exists Wiosla(value == 1)
+		exists Drewniany(value == 1)
+		exists Indianski(value == 0)
+		exists Cena(value >= 1)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("£ódka", "lodka");
+		retract (isRunning);
 end
 
 rule "Lodz podwodna"
-	when 
+	when
+		isRunning : IsRunning()
 		exists Wojskowy(value == 1)
 		exists Ladowanie(value == 0)
 		exists Podwodny(value == 1)
 		exists Atomowy(value == 0)
 	then
-		Odpowiedz odpowiedz = new Odpowiedz("Lodz podwodna", "Lp");
+		Odpowiedz odpowiedz = new Odpowiedz("£ódŸ podwodna", "lp");
+		retract (isRunning);
 end
 
-rule "Atomowa lodz podwodna"
+rule "Motorowka"
 	when
+		isRunning : IsRunning()
+		exists Cena(value == 2)
+		exists Zagle(value == 0)
+		exists Rozmiar(value == 0)
+		
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Motorówka", "motorowka");
+		retract (isRunning);
+end
+
+rule "Niszczyciel"
+	when
+		isRunning : IsRunning()
 		exists Wojskowy(value == 1)
 		exists Ladowanie(value == 0)
-		exists Podwodny(value == 1)
-		exists Atomowy(value == 1)
+		exists Podwodny(value == 0)
+		exists WojskowyTyp(value == 0)
+		exists Praca(value == 0)
+		exists Ladowy(value == 0)
 	then
-		Odpowiedz odpowiedz = new Odpowiedz("Atomowa lodz podwodna", "Alp");
+		Odpowiedz odpowiedz = new Odpowiedz("Niszczyciel", "niszczyciel");
+		retract (isRunning);
+end
+
+rule "Pancernik"
+	when
+		isRunning : IsRunning()
+		exists WojskowyTyp(value == 1)
+		exists DlugaPodroz(value == 0)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Pancernik", "pancernik");
+		retract (isRunning);
+end
+
+rule "Poduszkowiec"
+	when
+		isRunning : IsRunning()
+		exists Ladowy(value == 1)
+		exists Wojskowy(value == 0)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Poduszkowiec", "poduszkowiec");
+		retract (isRunning);
+end
+
+rule "Ponton"
+	when
+		isRunning : IsRunning()
+		exists Wiosla(value == 1)
+		exists Drewniany(value == 0)
+		exists Cena(value == 0)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Ponton", "ponton");
+		retract (isRunning);
+end
+
+rule "Prom"
+	when
+		isRunning : IsRunning()
+		exists Transportowy(value == 1)
+		exists LiczbaLudzi(value == 2)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Prom", "prom");
+		retract (isRunning);
+end
+
+rule "Rower"
+	when
+		isRunning : IsRunning()
+		exists Cena(value == 0)
+		exists Wiosla(value == 0)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Rower wodny", "rw");
+		retract (isRunning);
+end
+
+rule "Samochodowiec"
+	when
+		isRunning : IsRunning()
+		exists DlugaPodroz(value == 1)
+		exists Kontenery(value == 0)
+		exists LiczbaLudzi(value == 1)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Samochodowiec", "samochodowiec");
+		retract (isRunning);
+end
+
+rule "Skuter"
+	when
+		isRunning : IsRunning()
+		exists Cena(value == 1)
+		exists Wiosla(value == 0)
+		exists Podwodny(value == 0)
+		exists Ladowy(value == 0)
+		
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Skuter wodny", "skuter");
+		retract (isRunning);
+end
+
+rule "Smiglowcowiec"
+	when
+		isRunning : IsRunning()
+		exists Smiglowce(value == 1)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Œmig³owcowiec", "smiglowcowiec");
+		retract (isRunning);
+end
+
+rule "Tratwa"
+	when
+		isRunning : IsRunning()
+		exists Wiosla(value == 1)
+		exists Drewniany(value == 1)
+		exists Indianski(value == 0)
+		exists Cena(value == 0)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("Tratwa", "tratwa");
+		retract (isRunning);
+end
+
+rule "Zaglowiec"
+	when
+		isRunning : IsRunning()
+		exists Zagle(value == 1)
+		exists Kapitan(value == 1)
+		exists Wytrzymalosc(value == 1)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("¯aglowiec", "zaglowiec");
+		retract (isRunning);
+end
+
+rule "Zaglowka"
+	when
+		isRunning : IsRunning()
+		exists Zagle(value == 1)
+		exists Rzeczny(value == 1)
+		exists Rozmiar(value == 1)
+	then
+		Odpowiedz odpowiedz = new Odpowiedz("¯aglówka", "zaglowka");
+		retract (isRunning);
 end

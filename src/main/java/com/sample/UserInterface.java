@@ -44,7 +44,7 @@ public class UserInterface {
 					    options,
 					    options[0]);				
 			} else if (typ == "cena") {
-				Object[] options = {"Tani","Sredni","Drogi"};
+				Object[] options = {"Bradzo ma³ym","Ma³ym","Œrenim","Du¿ym","Bardzo du¿ym"};
 				n = JOptionPane.showOptionDialog(null,
 					    tresc,
 					    tytul,
@@ -53,8 +53,8 @@ public class UserInterface {
 					    null,
 					    options,
 					    options[0]);				
-			} else if (typ == "iloscLudzi") {
-				Object[] options = {"Malo","Srednio","Duzo"};
+			} else if (typ == "liczbaLudzi") {
+				Object[] options = {"Ma³o","Œrednio","Du¿o"};
 				n = JOptionPane.showOptionDialog(null,
 					    tresc,
 					    tytul,
@@ -64,7 +64,7 @@ public class UserInterface {
 					    options,
 					    options[0]);				
 			} else if (typ == "rozmiar") {
-				Object[] options = {"Maly","Sredni", "Duzy", "Ogromny"};
+				Object[] options = {"Ma³y","Œredni", "Du¿y", "Ogromny"};
 				n = JOptionPane.showOptionDialog(null,
 					    tresc,
 					    tytul,

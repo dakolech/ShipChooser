@@ -1,11 +1,39 @@
 package com.sample;
 
 public class Facts {
-
-	public static class Drewniany {
+	
+	public static class IsRunning {
+		
+	}
+	
+	public static class Cena {
 		public int value;
 		
-		public Drewniany(int v) {
+		public Cena(int v) {
+			value = v;
+		}
+	}
+	
+	public static class LiczbaLudzi {
+		public int value;
+		
+		public LiczbaLudzi(int v) {
+			value = v;
+		}
+	}
+
+	public static class Rozmiar {
+		public int value;
+		
+		public Rozmiar(int v) {
+			value = v;
+		}
+	}
+	
+	public static class Wytrzymalosc {
+		public int value;
+		
+		public Wytrzymalosc(int v) {
 			value = v;
 		}
 	}
@@ -26,6 +54,29 @@ public class Facts {
 		}
 	}
 	
+	public static class DlugaPodroz {
+		public int value;
+		
+		public DlugaPodroz(int v) {
+			value = v;
+		}
+	}
+	
+	public static class Rzeczny {
+		public int value;
+		
+		public Rzeczny(int v) {
+			value = v;
+		}
+	}
+	
+	public static class Drewniany {
+		public int value;
+		
+		public Drewniany(int v) {
+			value = v;
+		}
+	}
 	
 	public static class Transportowy {
 		public int value;
@@ -39,14 +90,6 @@ public class Facts {
 		public int value;
 		
 		public Podwodny(int v) {
-			value = v;
-		}
-	}
-	
-	public static class Atomowy {
-		public int value;
-		
-		public Atomowy(int v) {
 			value = v;
 		}
 	}
@@ -98,6 +141,30 @@ public class Facts {
 			value = v;
 		}
 	}
+
+	public static class Praca {
+		public int value;
+		
+		public Praca(int v) {
+			value = v;
+		}
+	}
+	
+	public static class Kapitan {
+		public int value;
+		
+		public Kapitan(int v) {
+			value = v;
+		}
+	}
+	
+	public static class Atomowy {
+		public int value;
+		
+		public Atomowy(int v) {
+			value = v;
+		}
+	}
 	
 	public static class Indianski {
 		public int value;
@@ -106,5 +173,13 @@ public class Facts {
 			value = v;
 		}
 	}
-
+	
+	public static class Kontenery {
+		public int value;
+		
+		public Kontenery(int v) {
+			value = v;
+		}
+	}
+	
 }
